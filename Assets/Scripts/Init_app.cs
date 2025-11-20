@@ -27,6 +27,8 @@ public class Init_app : MonoBehaviour
 
     public RecenterFromScript rec;
 
+    public GameObject gaussiaSplat;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Start()
@@ -39,10 +41,12 @@ public class Init_app : MonoBehaviour
                 output = t;
         }
 
+        gaussiaSplat.SetActive(false);
+
         //Logging.createFile();
         //Logging.WriteLog(-1,-1, "APP init");
 
-        foreach(GameObject gb in NoDestroy)
+        foreach (GameObject gb in NoDestroy)
         {
             DontDestroyOnLoad(gb);
         }
@@ -70,6 +74,8 @@ public class Init_app : MonoBehaviour
         firstTime = false;
 
         Experimento.NTrunos = (int) NTurnos.value;
+
+        gaussiaSplat.SetActive(true);
 
         Logging.WriteLog(-1,-1, "Cargando Exeprimento");
         inExperiment = true;
